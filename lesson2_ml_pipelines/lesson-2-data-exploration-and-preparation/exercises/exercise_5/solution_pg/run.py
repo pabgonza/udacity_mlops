@@ -11,13 +11,13 @@ logger = logging.getLogger()
 
 def go(args):
 
-    run = wandb.init(project="exercise_5", job_type="process_data")
+    run = wandb.init(project="exercise_5", job_type="preprocess_data")
 
     logger.info("Downloading artifact")
     artifact = run.use_artifact(args.input_artifact)
     artifact_path = artifact.file()
 
-    logger.info("Processing data")
+    logger.info("Preprocessing data")
     df = pd.read_parquet(artifact_path)
 
     df.drop_duplicates().reset_index(drop=True, inplace=True)

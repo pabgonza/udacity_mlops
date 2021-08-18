@@ -1,0 +1,6 @@
+
+mlflow run  \
+    --input_artifact  exercise_4/genres_mod.parquet:latest \
+    --artifact_name preprocessed_data.csv \
+    --artifact_type preprocessed_data \
+    --artifact_description "Preprocessed genres_mod database"
