@@ -6,7 +6,7 @@ entry_points:
     parameters:
       input_artifact:
         description: Fully-qualified artifact name for the input artifact
-        type: uri
+        type: str
       artifact_name:
         description: Name for the W&B artifact that will be created
         type: str
