@@ -2,5 +2,5 @@
 mlflow run . \
     -P input_artifact="exercise_4/genres_mod.parquet:latest" \
     -P artifact_name=preprocessed_data.csv \
-    -P artifact_type=preprocessed_data \
+    -P artifact_type=clean_data \
     -P artifact_description="Preprocessed genres_mod database"
