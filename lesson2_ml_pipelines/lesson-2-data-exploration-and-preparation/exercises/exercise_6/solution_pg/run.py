@@ -32,9 +32,11 @@ def go(args):
     ###################################
 
     splits["train"], splits["test"] = train_test_split(
-                                        df,
-                                        test_size=args.test_size,
-                                        random_state=args.random_state)
+        df,
+        test_size=args.test_size,
+        random_state=args.random_state,
+        stratify=df[args.stratify] if args.stratify != 'null' else None
+    )
 
     # Now we save the artifacts. We use a temporary directory so we do not leave
     # any trace behind
