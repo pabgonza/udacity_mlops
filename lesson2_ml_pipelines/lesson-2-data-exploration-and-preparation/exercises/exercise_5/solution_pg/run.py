@@ -17,9 +17,10 @@ def go(args):
     artifact = run.use_artifact(args.input_artifact)
     artifact_path = artifact.file()
 
-    logger.info("Preprocessing data")
     df = pd.read_parquet(artifact_path)
 
+    # Preprocessing
+    logger.info("Preprocessing data")
     df.drop_duplicates().reset_index(drop=True, inplace=True)
 
     # add new feature
@@ -33,8 +34,8 @@ def go(args):
         type=args.artifact_type,
         description=args.artifact_description,
     )
-    df.to_csv("preprocessed_data.csv")
-    artifact.add_file("preprocessed_data.csv")
+    df.to_csv(args.artifact_name)
+    artifact.add_file(args.artifact_name)
 
     logger.info("Logging artifact")
     run.log_artifact(artifact)
