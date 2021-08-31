@@ -1,0 +1,14 @@
+mlflow run . -P hydra_options="random_forest_pipeline.random_forest.max_depth=5"
+  
+mlflow run . -P hydra_options="random_forest_pipeline.random_forest.n_estimators=10"
+
+mlflow run . -P hydra_options="random_forest_pipeline.random_forest.max_depth=1,5,10 -m"
+  
+mlflow run . -P hydra_options="random_forest_pipeline.random_forest.max_depth=range(1,10,2) -m"
+
+mlflow run . -P \
+    hydra_options="\
+        random_forest_pipeline.random_forest.max_depth=range(10,50,3) \
+        random_forest_pipeline.tfidf.max_features=range(50,200,50) \
+        hydra/launcher=joblib \
+        -m"
