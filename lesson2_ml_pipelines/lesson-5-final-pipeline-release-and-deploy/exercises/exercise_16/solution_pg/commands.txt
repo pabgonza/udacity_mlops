@@ -1,0 +1,17 @@
+wandb artifact get genre_classification_prod/model_export:prod --root model
+
+# Offline inference_____________
+mlflow models predict -t json -i model/input_example.json -m model
+
+# Get other input example
+wandb artifact get genre_classification_prod/data_test.csv:latest
+# Now we can run the model on that file:
+mlflow models predict \
+    -t csv \
+    -i ./artifacts/data_test.csv:v0/data_test.csv \
+    -m model
+
+
+# Online inference_____________
+mlflow models serve -m model &
+
