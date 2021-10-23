@@ -1,0 +1,1 @@
+conda create --name udacity python=3.8 mlflow jupyter pandas requests wandb -c conda-forge
