@@ -1,6 +1,6 @@
 git init
 dvc init
-dvc remote add -d localremote /home/pablo/src/local_remote
+dvc remote add -d localremote ../local_remote
 dvc run -n prepare \
         -d prepare.py -d fake_data.csv \
         -o X.csv -o y.csv \
